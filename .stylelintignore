@@ -1,0 +1,15 @@
+# 其他类型文件
+**/*.js,
+**/*.jsx,
+**/*.tsx,
+**/*.ts,
+**/*.html,
+**/*.json,
+**/*.md,
+**/*.yaml,
+stats.html
+# 测试和打包目录
+/test/
+/dist/
+/node_modules/
+/lib/

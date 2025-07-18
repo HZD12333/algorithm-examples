@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 冒泡排序
+        const arr1 = [1, 7, 45, 21, 74, 39, 11]
+        function bubbleSort(arr) {
+            let swapped;
+            for (let i = 0; i < arr.length - 1; i++) {
+                swapped = false;
+                for (let j = 0; j < arr.length - 1 - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                        swapped = true;
+                    }
+                }
+                if (!swapped) break;
+            }
+            return arr;
+        }
+        console.log('bubbleSort', bubbleSort(arr1)); // [1, 7, 11, 21, 39, 45, 74]
+    </script>
+
+    <script>
+        // 快速排序
+        const arr2 = [1, 7, 45, 21, 74, 39, 11, 32, 83, 23, 44, 12, 34, 99];
+        function quickSort(arr) {
+            if (arr.length <= 1) return arr;
+            const pivot = arr[0];
+            const len = arr.length;
+            const left = [];
+            const right = [];
+            for (let i = 1; i < len; i++) {
+                if (arr[i] < pivot) {
+                    left.push(arr[i]);
+                } else {
+                    right.push(arr[i]);
+                }
+            }
+            return [...quickSort(left), pivot, ...quickSort(right)];
+        }
+        console.log('quickSort', quickSort(arr2)); // [1, 7, 11, 21, 32, 34, 39, 44, 45, 74, 83, 99]
+    </script>
+
+    <script>
+        // 二分法 ：前提是有序数组，静态数据集
+        const arr3 = [1, 7, 11, 21, 32, 34, 39, 44, 45, 74, 83, 99];
+        function binarySearch(arr, target) {
+            let left = 0;
+            let right = arr.length - 1;
+            while (left <= right) {
+                const mid = Math.floor((left + right) / 2);
+                if (arr[mid] === target) {
+                        return mid;
+                }
+                if (arr[mid] < target) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+            return -1;
+        }
+        console.log('binarySearch', binarySearch(arr3, 44)); // 7
+    </script>
+</body>
+</html>
